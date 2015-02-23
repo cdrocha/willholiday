@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillHoliday", "WillHoliday\WillHoliday.csproj", "{BEE52D5A-6045-43E4-89D4-C37E10DF488D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillHolidayDB", "WillHolidayDB\WillHolidayDB.csproj", "{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WillHolidayBusiness", "WillHolidayBusiness\WillHolidayBusiness.csproj", "{39D0861F-4152-450D-94F6-A0AF05528193}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEE52D5A-6045-43E4-89D4-C37E10DF488D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE52D5A-6045-43E4-89D4-C37E10DF488D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE52D5A-6045-43E4-89D4-C37E10DF488D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE52D5A-6045-43E4-89D4-C37E10DF488D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D0861F-4152-450D-94F6-A0AF05528193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D0861F-4152-450D-94F6-A0AF05528193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D0861F-4152-450D-94F6-A0AF05528193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D0861F-4152-450D-94F6-A0AF05528193}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
