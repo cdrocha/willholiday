@@ -162,5 +162,91 @@ namespace WillHoliday
         }
 
 
+
+        public int CambioPassword(string nombre, string actual, string nuevo)
+        {
+            int filasAfectadas;
+            try
+            {
+                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WillHoliday"].ToString());
+                command = new SqlCommand("CambioPassword", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@UsuarioEmail", nombre);
+                command.Parameters.AddWithValue("@PasswordActual", actual);
+                command.Parameters.AddWithValue("@PasswordNuevo", nuevo);
+
+                conn.Open();
+                filasAfectadas = command.ExecuteNonQuery();
+                conn.Close();
+                return filasAfectadas;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null && conn.State != ConnectionState.Closed)
+                    conn.Close();
+            }
+        }
+
+        public int ResetPassword(string nombre, string nuevo)
+        {
+            int filasAfectadas;
+
+            try
+            {
+                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WillHoliday"].ToString());
+                command = new SqlCommand("ResetPassword", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@UsuarioEmail", nombre);
+                command.Parameters.AddWithValue("@PasswordNuevo", nuevo);
+
+                conn.Open();
+                filasAfectadas = command.ExecuteNonQuery();
+                conn.Close();
+                return filasAfectadas;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null && conn.State != ConnectionState.Closed)
+                    conn.Close();
+            }
+        }
+
+        public int ExisteEmail(string usuarioEmail)
+        {
+            int filasAfectadas;
+
+            try
+            {
+                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WillHoliday"].ToString());
+                command = new SqlCommand("UsuarioExisteEmail", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@UsuarioEmail", usuarioEmail);
+
+                conn.Open();
+                filasAfectadas = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
+                return filasAfectadas;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null && conn.State != ConnectionState.Closed)
+                    conn.Close();
+            }
+        }
     }
 }

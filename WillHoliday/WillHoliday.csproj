@@ -53,13 +53,22 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CambioPassword.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Login_Activacion.aspx" />
     <Content Include="Registracion.aspx" />
+    <Content Include="SolicitudCambioPassword.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CambioPassword.aspx.cs">
+      <DependentUpon>CambioPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambioPassword.aspx.designer.cs">
+      <DependentUpon>CambioPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,6 +97,13 @@
     </Compile>
     <Compile Include="Registracion.aspx.designer.cs">
       <DependentUpon>Registracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudCambioPassword.aspx.cs">
+      <DependentUpon>SolicitudCambioPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SolicitudCambioPassword.aspx.designer.cs">
+      <DependentUpon>SolicitudCambioPassword.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
