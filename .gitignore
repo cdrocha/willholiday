@@ -1,0 +1,11 @@
+/WillHoliday/bin/*.dll
+/WillHoliday/bin/*.pdb
+/WillHolidayDB/bin/Debug/*.dll
+/WillHolidayBusiness/obj/Debug/*.dll
+*.dll
+*.pdb
+/WillHoliday/bin
+/WillHoliday/obj/Debug
+/WillHolidayDB/bin/Debug
+/WillHolidayBusiness/obj/Debug
+/WillHolidayDB/obj/Debug
