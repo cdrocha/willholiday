@@ -11,6 +11,5 @@ namespace WillHoliday
         public SqlConnection conn = null;
         public SqlCommand command = null;
 
-
     }
 }

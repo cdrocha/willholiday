@@ -44,8 +44,6 @@ namespace WillHoliday
         #endregion
 
 
-
-
         public int ValidarUsuario(string UsuarioEmail, string UsuarioPassword)
         {
             int usuarioID;
@@ -161,7 +159,41 @@ namespace WillHoliday
             }
         }
 
+        public int RegistrarUsuarioFacebook(string facebookUserId, string first_name, string last_name, char gender, string email, string fotoURL)
+        {
+            int usuarioID;
 
+            try
+            {
+                if (conn == null)
+                {
+                    conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WillHoliday"].ToString());
+                }
+                command = new SqlCommand("FacebookLogin", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@FacebookID", facebookUserId);
+                command.Parameters.AddWithValue("@Email", email);
+                command.Parameters.AddWithValue("@PerfilNombre", first_name);
+                command.Parameters.AddWithValue("@PerfilApellido", last_name);
+                command.Parameters.AddWithValue("@PerfilSexo", gender);
+                command.Parameters.AddWithValue("@PerfilFoto", fotoURL);
+	 
+                conn.Open();
+                usuarioID = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
+                return usuarioID;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null && conn.State != ConnectionState.Closed)
+                    conn.Close();
+            }
+        }
 
         public int CambioPassword(string nombre, string actual, string nuevo)
         {

@@ -7,14 +7,10 @@
     <title></title>
 </head>
 <body>
-<form id="form2" runat="server">
-<div>
-    Bienvenido
-    <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" />
-    <br />
-    <br />
-    <asp:LoginStatus ID="LoginStatus1" runat="server" />
-</div>  
-</form>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Button ID="btnLogout" runat="server" Text="Log out" OnClick="btnLogout_onclick" />
+    </div>
+    </form>
 </body>
 </html>

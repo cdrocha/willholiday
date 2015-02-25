@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
+using System.Web.Services;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Security;
@@ -46,5 +46,28 @@ namespace WillHoliday
         }
 
 
+        [WebMethod]
+        public static void LoginWithFacebook(string facebookUserId, string first_name, string last_name, string gender, string email)
+        {
+            daLogin da = new daLogin();
+            //Esto lo tendria que hacer en la capa de negocios, por ahora lo dejamos aca.
+            char genderChar = 'F'; //Seteo mujer por defecto
+            if(gender.ToUpper() == "MALE")
+            {
+                genderChar = 'M';
+            }
+
+            //Genero la url de la foto de FB, esto tmb va en la capa de negocios
+            string altoFoto = "400";
+            string anchoFoto = "400";
+
+            string fotoURL = "https://graph.facebook.com/"+facebookUserId+"/picture?width="+anchoFoto+"&height="+altoFoto;
+
+
+            da.RegistrarUsuarioFacebook(facebookUserId, first_name, last_name, genderChar, email, fotoURL);
+            //FormsAuthentication.RedirectFromLoginPage(email, false);
+            FormsAuthentication.SetAuthCookie(email, false);
+            
+        }
     }
 }

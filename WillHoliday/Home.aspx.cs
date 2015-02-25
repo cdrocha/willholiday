@@ -17,5 +17,11 @@ namespace WillHoliday
                 FormsAuthentication.RedirectToLoginPage();
             }
         }
+
+        public void btnLogout_onclick(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            FormsAuthentication.RedirectToLoginPage();
+        }
     }
 }

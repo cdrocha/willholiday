@@ -1,39 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WillHoliday.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WillHoliday.Login"  %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script src="Js/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+<script src="Js/login.js" type="text/javascript"></script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
 
-    <script type="text/javascript">
-        function signinCallback(authResult) {
-            if (authResult['access_token']) {
-                // Autorizado correctamente
-                // Oculta el botón de inicio de sesión ahora que el usuario está autorizado, por ejemplo:
-                document.getElementById('signinButton').setAttribute('style', 'display: none');
-            } else if (authResult['error']) {
-                // Se ha producido un error.
-                // Posibles códigos de error:
-                //   "access_denied": el usuario ha denegado el acceso a la aplicación.
-                //   "immediate_failed": no se ha podido dar acceso al usuario de forma automática.
-                // console.log('There was an error: ' + authResult['error']);
-            }
-        }
-    </script>
-
+    
 </head>
 <body>
-
-    <script type="text/javascript">
-        (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/client:plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-        })();
-    </script>
-
     <div>
         <div id="divFacebookLogin">
+            <!--
+              Below we include the Login Button social plugin. This button uses
+              the JavaScript SDK to present a graphical Login button that triggers
+              the FB.login() function when clicked.
+            -->
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-auto-logout-link="true"></fb:login-button>
         </div>
         <div id="divGoogleLogin">
             <span id="signinButton"><span class="g-signin" data-callback="signinCallback" data-clientid="216735800749-cs9ln2u77tn8vshaitc1k84pcgi1p27r.apps.googleusercontent.com"
