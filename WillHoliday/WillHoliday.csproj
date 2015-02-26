@@ -56,6 +56,8 @@
     <Content Include="CambioPassword.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Js\jquery-1.11.2.min.js" />
+    <Content Include="Js\login.js" />
     <Content Include="Login.aspx" />
     <Content Include="Login_Activacion.aspx" />
     <Content Include="Registracion.aspx" />
@@ -123,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Js\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

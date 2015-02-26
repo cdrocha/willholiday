@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-<form id="form2" runat="server">
+<form id="form1" runat="server">
 <div>
     Bienvenido
     <asp:LoginName ID="LoginName1" runat="server" Font-Bold = "true" />
