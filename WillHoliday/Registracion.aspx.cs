@@ -17,6 +17,8 @@ namespace WillHoliday
 
     public partial class Registracion : System.Web.UI.Page
     {
+        private string codigoActivacion =  Guid.NewGuid().ToString();
+
         protected void RegistrarUsuario(object sender, EventArgs e)
         {
             int usuarioID;
@@ -24,13 +26,14 @@ namespace WillHoliday
 
             using(daLogin da = new daLogin())
             {
-                usuarioID = da.RegistrarUsuario(txtEmail.Text.Trim(), txtPassword.Text.Trim());
+                usuarioID = da.RegistrarUsuario(txtEmail.Text.Trim(), Encriptacion.EncriptarMD5(txtPassword.Text.Trim()));
                 switch (usuarioID)
                 {
                     case -2:
                         message = "El mail que ingresaste ya está en uso.";
                         break;
                     default:
+                        da.GuardarActivacionPendiente(codigoActivacion, usuarioID);
                         EnviarEmailValidacion(usuarioID);
                         message = "Registración exitosa.";
                         break;
@@ -42,9 +45,10 @@ namespace WillHoliday
         }
 
 
+        
+
         private void EnviarEmailValidacion(int usuarioID)
         {
-            string codigoActivacion = Guid.NewGuid().ToString();
             string mailSender = WebConfigurationManager.AppSettings["mailSender"];
             string mailSenderTexto = WebConfigurationManager.AppSettings["mailSenderTexto"];
             string passSender = WebConfigurationManager.AppSettings["passSender"];
@@ -52,13 +56,7 @@ namespace WillHoliday
             string mailHost = WebConfigurationManager.AppSettings["mailHost"];
             int mailPort = Int32.Parse(WebConfigurationManager.AppSettings["mailPort"]);
 
-            using (daLogin da = new daLogin())
-            {
-
-                da.GuardarActivacionPendiente(codigoActivacion, usuarioID);
-            }
-
-            //HAY QUE PASAR TODOS LOS VALORES DE ENVIO DE MAIL, A UN ARCHIVO DE CONFIGURACION
+            
             using (MailMessage mail = new MailMessage(mailSenderTexto, txtEmail.Text.Trim()))
             {
                 mail.Subject = mailSubjectTexto;

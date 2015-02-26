@@ -44,8 +44,12 @@
             <form id="form2" runat="server">
             <asp:Login ID="Login1" runat="server" OnAuthenticate="ValidarUsuario">
             </asp:Login>
-            
+            <asp:Button ID="btnRegistracion" Text="Registracion" runat="server" 
+            onclick="btnRegistracion_Click"/>
+            <asp:Button ID="btnRecuperarPassword" runat="server" 
+            onclick="btnRecuperarPassword_Click" Text="Recuperar password"/>
             </form>
+            
         </div>
     </div>
 </body>

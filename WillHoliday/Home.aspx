@@ -15,6 +15,8 @@
     <br />
     <asp:LoginStatus ID="LoginStatus1" runat="server" />
 </div>  
+<asp:Button ID="btnCambioPassword" runat="server" 
+    onclick="btnCambioPassword_Click" Text="Cambiar password"/>
 </form>
 </body>
 </html>

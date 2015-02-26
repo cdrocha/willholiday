@@ -25,7 +25,7 @@ namespace WillHoliday
 
             using (daLogin da = new daLogin())
             {
-                usuarioID = da.ValidarUsuario(Login1.UserName, Login1.Password);
+                usuarioID = da.ValidarUsuario(Login1.UserName, Encriptacion.EncriptarMD5(Login1.Password));
                 switch (usuarioID)
                 {
                     case -1:
@@ -45,6 +45,15 @@ namespace WillHoliday
 
         }
 
+        protected void btnRegistracion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Registracion.aspx");
+        }
 
+
+        protected void btnRecuperarPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SolicitudCambioPassword.aspx");
+        }
     }
 }

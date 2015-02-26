@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CambioPassword.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Login_Activacion.aspx" />
@@ -68,6 +69,14 @@
     </Compile>
     <Compile Include="CambioPassword.aspx.designer.cs">
       <DependentUpon>CambioPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Encriptacion.cs" />
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

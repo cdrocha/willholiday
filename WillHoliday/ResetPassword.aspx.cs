@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace WillHoliday
 {
-    public partial class CambioPassword : System.Web.UI.Page
+    public partial class ResetPassword : System.Web.UI.Page
     {
         private string codigoActivacion = string.Empty;
         private bool olvidoAnterior = false;
@@ -25,29 +25,34 @@ namespace WillHoliday
                 FormsAuthentication.RedirectToLoginPage();
             }
 
+            
         }
 
 
-        protected void OnChangingPassword(object sender, LoginCancelEventArgs e)
+      
+        private bool ValidaPassword()
+        {
+            if (!(txtPasswordNuevo.Text.Trim().Equals(txtConfirmacion.Text.Trim())))
+            {
+                message = "El password y su confirmacion deben ser iguales.";
+                return false;
+            }
+                return true;
+
+        }
+
+        protected void btnEnviar_Click(object sender, EventArgs e)
         {
             int filasAfectadas = 0;
 
             using (daLogin da = new daLogin())
             {
-                if (olvidoAnterior)
+
+                if (ValidaPassword())
                 {
-                    filasAfectadas = da.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
-                    if (filasAfectadas > 0)
+                    if (olvidoAnterior)
                     {
-                        lblMessage.ForeColor = Color.Green;
-                        message = "El password se guardó correctamente.";
-                    }
-                }
-                else
-                {
-                    if (!ChangePassword1.CurrentPassword.Equals(ChangePassword1.NewPassword, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        filasAfectadas = da.CambioPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.CurrentPassword), Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
+                        filasAfectadas = da.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(txtPasswordNuevo.Text));
                         if (filasAfectadas > 0)
                         {
                             lblMessage.ForeColor = Color.Green;
@@ -59,20 +64,19 @@ namespace WillHoliday
                             message = "EL password anterior no concuerda con tu usuario.";
                         }
                     }
-                    else
-                    {
-                        lblMessage.ForeColor = Color.Red;
-                        message = "El password anterior y el nuevo no deben ser iguales.";
-                    }
+
+
+                    ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+
+                    //if(filasAfectadas > 0)
+                    //    Response.Redirect("~/Login.aspx");
                 }
-
-                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
-
-                //if(filasAfectadas > 0)
-                //    Response.Redirect("~/Login.aspx");
+                else
+                {
+                    ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+                }
             }
 
-            e.Cancel = true;
         }
     }
 

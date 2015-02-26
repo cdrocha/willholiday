@@ -41,7 +41,7 @@ namespace WillHoliday
                 string body = "Hola " + txtEmail.Text.Trim() + ", ";
                 body += "<br /><br />Hacé click en el siguiente link para resetear tu password.";
               //  body += "<br /><a href = '" + "CambioPassword.aspx?codigoActivacion=" + codigoActivacion + "'>Reset de password.</a>";
-                body += "<br /><a href = '" + Request.Url.AbsoluteUri.ToLower().Replace("solicitudcambiopassword.aspx", "cambiopassword.aspx?codigoActivacion=" + codigoActivacion) + "&id="+txtEmail.Text.Trim()+"'>Reset de password.</a>";
+                body += "<br /><a href = '" + Request.Url.AbsoluteUri.ToLower().Replace("solicitudcambiopassword.aspx", "resetpassword.aspx?codigoActivacion=" + codigoActivacion) + "&id="+txtEmail.Text.Trim()+"'>Reset de password.</a>";
                 body += "<br /><br />Gracias";
                 mm.Body = body;
                 mm.IsBodyHtml = true;

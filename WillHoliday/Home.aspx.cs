@@ -17,5 +17,12 @@ namespace WillHoliday
                 FormsAuthentication.RedirectToLoginPage();
             }
         }
+
+        protected void btnCambioPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CambioPassword.aspx");
+        }
+
+       
     }
 }
