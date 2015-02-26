@@ -16,11 +16,21 @@ CREATE PROCEDURE FacebookLogin
 AS
 BEGIN
 	SET NOCOUNT ON;
+	--Primero verifico si el usuario ya estaba registrado con facebook
 	IF EXISTS(SELECT UsuarioID FROM Usuario WHERE FacebookID = @FacebookID)
 	BEGIN
+	--EN caso que estuviera registrado con facebook anteriormente, actualizo la fecha de su ultimo ingreso
 		update Usuario set LastLoginDate = GETDATE() WHERE FacebookID = @FacebookID
 		SELECT  UsuarioID FROM Usuario WHERE FacebookID = @FacebookID
 	END
+	--Si nunca se registro con facebook, me fijo si su email ya existe en nuestra base
+	ELSE IF EXISTS(SELECT UsuarioID FROM Usuario WHERE UsuarioEmail = @Email)
+	begin
+	--si ya existe en nuestra BD es porque el mail con el que se registro es el que usa para facebook,
+	--en este caso unifico los logins
+	update Usuario set FacebookID = @FacebookID where UsuarioEmail = @Email
+	SELECT  UsuarioID FROM Usuario WHERE UsuarioEmail = @Email
+	end
 	ELSE
 	BEGIN
 	--en este caso es la primera vez que el usuario se loguea con facebook, así que lo agrego
