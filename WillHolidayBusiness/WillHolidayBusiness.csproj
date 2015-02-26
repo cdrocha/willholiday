@@ -45,7 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="boLogin.cs" />
+    <Compile Include="Constantes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WillHolidayDB\WillHolidayDB.csproj">
+      <Project>{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}</Project>
+      <Name>WillHolidayDB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Configuration;
 using System;
+using WillHolidayDB;
 
 namespace WillHoliday
 {
