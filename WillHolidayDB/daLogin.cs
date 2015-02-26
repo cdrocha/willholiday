@@ -7,7 +7,7 @@ using System.Data;
 using System.IO;
 
 
-namespace WillHoliday
+namespace WillHolidayDB
 {
 
     public class daLogin : daBase, IDisposable
@@ -190,8 +190,11 @@ namespace WillHoliday
             }
             finally
             {
-                if (conn != null && conn.State != ConnectionState.Closed)
-                    conn.Close();
+                if (conn != null)
+                {
+                    if(conn.State != ConnectionState.Closed)
+                        conn.Close();
+                }
             }
         }
 

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Content Include="CambioPassword.aspx" />
     <Content Include="ResetPassword.aspx" />
+    <Content Include="Fotos\foto_hombre_default.jpg" />
     <Content Include="Home.aspx" />
     <Content Include="Js\jquery-1.11.2.min.js" />
     <Content Include="Js\login.js" />
@@ -118,6 +119,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WillHolidayBusiness\WillHolidayBusiness.csproj">
+      <Project>{39D0861F-4152-450D-94F6-A0AF05528193}</Project>
+      <Name>WillHolidayBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WillHolidayDB\WillHolidayDB.csproj">
       <Project>{5A3E81EA-0B53-49B6-AD9B-7E5E720ABF9E}</Project>
       <Name>WillHolidayDB</Name>

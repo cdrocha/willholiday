@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using WillHolidayBusiness;
 
 namespace WillHoliday
 {
@@ -26,7 +27,14 @@ namespace WillHoliday
 
         protected void btnCambioPassword_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/CambioPassword.aspx");
+            string email;
+
+            using (boLogin bo = new boLogin())
+            {
+                
+            }
+
+            Response.Redirect("~/CambioPassword.aspx?id="+this.Page.User.Identity.Name);
         }
 
        

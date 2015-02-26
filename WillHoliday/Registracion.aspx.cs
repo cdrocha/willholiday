@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Configuration;
-
+using WillHolidayDB;
 
 namespace WillHoliday
 {

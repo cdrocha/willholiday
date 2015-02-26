@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using WillHolidayBusiness;
 
 namespace WillHoliday
 {
@@ -32,7 +33,7 @@ namespace WillHoliday
         {
             int filasAfectadas = 0;
 
-            using (daLogin da = new daLogin())
+            using (boLogin bo = new boLogin())
             {
                 if (olvidoAnterior)
                 {
@@ -47,7 +48,7 @@ namespace WillHoliday
                 {
                     if (!ChangePassword1.CurrentPassword.Equals(ChangePassword1.NewPassword, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        filasAfectadas = da.CambioPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.CurrentPassword), Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
+                        filasAfectadas = bo.CambioPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.CurrentPassword), Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
                         if (filasAfectadas > 0)
                         {
                             lblMessage.ForeColor = Color.Green;
@@ -68,8 +69,6 @@ namespace WillHoliday
 
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
 
-                //if(filasAfectadas > 0)
-                //    Response.Redirect("~/Login.aspx");
             }
 
             e.Cancel = true;

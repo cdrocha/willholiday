@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using WillHolidayBusiness;
 
 namespace WillHoliday
 {
@@ -45,14 +46,14 @@ namespace WillHoliday
         {
             int filasAfectadas = 0;
 
-            using (daLogin da = new daLogin())
+            using (boLogin bo = new boLogin())
             {
 
                 if (ValidaPassword())
                 {
                     if (olvidoAnterior)
                     {
-                        filasAfectadas = da.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(txtPasswordNuevo.Text));
+                        filasAfectadas = bo.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(txtPasswordNuevo.Text));
                         if (filasAfectadas > 0)
                         {
                             lblMessage.ForeColor = Color.Green;
