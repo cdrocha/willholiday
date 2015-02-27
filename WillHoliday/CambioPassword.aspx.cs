@@ -37,7 +37,7 @@ namespace WillHoliday
             {
                 if (olvidoAnterior)
                 {
-                    filasAfectadas = da.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
+                    filasAfectadas = bo.ResetPassword(usuarioEmail, Encriptacion.EncriptarMD5(ChangePassword1.NewPassword));
                     if (filasAfectadas > 0)
                     {
                         lblMessage.ForeColor = Color.Green;
