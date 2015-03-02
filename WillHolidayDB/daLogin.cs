@@ -46,7 +46,6 @@ namespace WillHolidayDB
 
         public int ValidarUsuario(string UsuarioEmail, string UsuarioPassword)
         {
-            int usuarioID;
 
             try
             {
@@ -58,9 +57,7 @@ namespace WillHolidayDB
 
                 conn.Open();
 
-                command.ExecuteNonQuery();
-                usuarioID = Convert.ToInt32(command.ExecuteScalar());
-                return usuarioID;
+                return Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
             {
