@@ -92,5 +92,18 @@ namespace WillHolidayBusiness
 
             return da.ValidarUsuario(usuarioEmail, password);
         }
+
+
+        /// <summary>
+        /// Loguarse o crear usuario utilizando una cuenta de Google.
+        /// En caso de crear un usuario, guarda datos en las tablas Usuario y Perfil        
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="email"></param>
+        public static int LoginWithGoogle(string token, string email)
+        {
+            daLogin da = new daLogin();
+            return da.RegistrarUsuarioGoogle(token,email);
+        }
     }
 }

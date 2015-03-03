@@ -280,5 +280,39 @@ namespace WillHolidayDB
                     conn.Close();
             }
         }
+
+        public int RegistrarUsuarioGoogle(string token, string email)
+        {
+            int usuarioID;
+            try
+            {
+                if (conn == null)
+                {
+                    conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WillHoliday"].ToString());
+                }
+                command = new SqlCommand("GoogleLogin", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Token", token);
+                command.Parameters.AddWithValue("@Email", email);
+
+                conn.Open();
+                usuarioID = Convert.ToInt32(command.ExecuteScalar());
+                conn.Close();
+                return usuarioID;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                }
+            }
+        }
     }
 }

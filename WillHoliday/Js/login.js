@@ -98,9 +98,16 @@ function loginSuccessful() {
 
 function signinCallback(authResult) {
     if (authResult['access_token']) {
-        // Autorizado correctamente
-        // Oculta el botón de inicio de sesión ahora que el usuario está autorizado, por ejemplo:
         document.getElementById('signinButton').setAttribute('style', 'display: none');
+        console.log('Oculta el inicio de sesión si se ha accedido correctamente.');
+        // Activa la solicitud para obtener la dirección de correo electrónico.
+         gapi.client.load('oauth2', 'v2', function() {
+          var request = gapi.client.oauth2.userinfo.get();
+            request.execute(getEmailCallback);
+        });
+/*
+        
+  */      
     } else if (authResult['error']) {
         // Se ha producido un error.
         // Posibles códigos de error:
@@ -110,10 +117,58 @@ function signinCallback(authResult) {
     }
 }
 
+
+function getEmailCallback(obj)
+{
+if (obj['email']) {
+    //Envio los datos al servidor.
+     var dataValue = "{email: '" + obj['email']+ "' }";
+        $.ajax({
+            type: "POST",
+            url: "login.aspx/LoginWithGoogle",
+            data: dataValue,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+            success: function(result) {
+            window.location = "Home.aspx";
+            }
+        });
+    }
+}
+
+
+function disconnectUser(access_token) {
+  var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
+      access_token;
+
+  // Realiza una solicitud GET asíncrona.
+  $.ajax({
+    type: 'GET',
+    url: revokeUrl,
+    async: false,
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(nullResponse) {
+      // Lleva a cabo una acción ahora que el usuario está desconectado
+      // La respuesta siempre está indefinida.
+    },
+    error: function(e) {
+      // Gestiona el error
+      // console.log(e);
+      // Puedes indicar a los usuarios que se desconecten de forma manual si se produce un error
+      // https://plus.google.com/apps
+    }
+  });
+}
+
 (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
     po.src = 'https://apis.google.com/js/client:plusone.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    $('#revokeButton').click(disconnectUser);
 })();
 //FIN Google Login
 

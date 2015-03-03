@@ -62,5 +62,13 @@ namespace WillHoliday
         {
             Response.Redirect("~/SolicitudCambioPassword.aspx");
         }
+
+        [WebMethod]
+        public static void LoginWithGoogle( string email)
+        {
+            string token = string.Empty;
+            boLogin.LoginWithGoogle(token,email);
+            FormsAuthentication.SetAuthCookie(email, false);
+        }
     }
 }
